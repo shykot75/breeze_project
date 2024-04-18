@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\Admin\AdminUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,11 @@ require __DIR__.'/auth.php';
 
 Route::group(['as'=>'admin.','prefix'=>'admin', 'middleware'=>['auth', 'role:admin']], function (){
     Route::get('/dashboard', [AdminController::class, 'adminDashboard'])->name('dashboard');
+
+    // User Routes
+    Route::group(['prefix' => 'user', 'as' => 'user.'], function(){
+        Route::get('/', [AdminUserController::class, 'index'])->name('index');
+    });
 });
 
 
