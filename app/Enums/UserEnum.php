@@ -4,9 +4,7 @@ namespace App\Enums;
 
 enum UserEnum
 {
-
     public const DB_TABLE = "users";
-
     public const ID = 'id';
     public const USERNAME = 'username';
     public const NAME = 'name';

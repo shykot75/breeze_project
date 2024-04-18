@@ -36,8 +36,16 @@ require __DIR__.'/auth.php';
 
 
 
-Route::get('/admin/dashboard', [AdminController::class, 'adminDashboard'])->name('admin.dashboard');
-Route::get('/dashboard', [UserController::class, 'userDashboard'])->name('dashboard');
+Route::group(['as'=>'admin.','prefix'=>'admin', 'middleware'=>['auth', 'role:admin']], function (){
+    Route::get('/dashboard', [AdminController::class, 'adminDashboard'])->name('dashboard');
+});
+
+
+Route::group(['as'=>'','prefix'=>'', 'middleware'=>['auth', 'verified','role:user']], function (){
+    Route::get('/dashboard', [UserController::class, 'userDashboard'])->name('dashboard');
+});
+
+
 
 
 

@@ -15,15 +15,15 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-//        User::create([
-//            UserEnum::USERNAME => 'super_admin',
-//            UserEnum::NAME => 'Super Admin',
-//            UserEnum::EMAIL => 'super@admin.com',
-//            UserEnum::PHONE => '01234567890',
-//            UserEnum::PASSWORD => Hash::make('12345678'),
-//            UserEnum::ROLE => UserEnum::ROLE_ADMIN,
-//            UserEnum::STATUS => UserEnum::STATUS_ACTIVE,
-//        ]);
+        User::create([
+            UserEnum::USERNAME => 'super_admin',
+            UserEnum::NAME => 'Super Admin',
+            UserEnum::EMAIL => 'super@admin.com',
+            UserEnum::PHONE => '01234567890',
+            UserEnum::PASSWORD => Hash::make('12345678'),
+            UserEnum::ROLE => UserEnum::ROLE_ADMIN,
+            UserEnum::STATUS => UserEnum::STATUS_ACTIVE,
+        ]);
 
         User::create([
             UserEnum::USERNAME => 'user75',
