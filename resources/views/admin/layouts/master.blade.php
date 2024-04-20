@@ -19,6 +19,8 @@
     <title>Admin Panel</title>
 
     <link rel="stylesheet" href="{{ asset('admin_assets/css/admin.css') }}">
+
+    @stack('after-styles')
 </head>
 <body class="text-gray-800 font-inter">
 <!-- Sidebar Starts -->

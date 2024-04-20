@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminUserUpdateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,7 @@ class AdminUserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.user.createUpdate');
     }
 
     /**
@@ -46,15 +47,26 @@ class AdminUserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::where('id', $id)->first();
+        return view('admin.user.createUpdate',compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(AdminUserUpdateRequest $request, string $id)
     {
-        //
+        try{
+            $updateData = $request->validated();
+            User::where('id', $id)
+                ->update($updateData);
+            return redirect()->route('admin.user.index')->with('success', 'User Updated Successfully..');
+        }catch(\Throwable $exception){
+            return redirect()->route('admin.user.index')->with('error', 'Invalid User Information..')->withInput($request->all());
+        }
+
+
+
     }
 
     /**

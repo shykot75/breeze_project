@@ -1,11 +1,13 @@
 @extends('admin.layouts.master')
 
 @section('content')
-    <div class="p-6">
-        User Content
 
-        <div id="demo_info" class="box"></div>
-        <table id="example" class="display" style="width:100%">
+    <div class="p-6">
+        <div class="flex justify-between items-center py-4">
+            <div class="text-3xl font-bold">Users List</div>
+        </div>
+
+        <table id="example" class="" style="width:100%">
             <thead>
             <tr>
                 <th>SL</th>
@@ -31,8 +33,12 @@
                         {{ ($user->status == \App\Enums\UserEnum::STATUS_ACTIVE) ? 'Active' : (($user->status == \App\Enums\UserEnum::STATUS_INACTIVE) ? 'Inactive' : 'Block') }}
                     </td>
                     <td>
-                        <a href="">Edit</a>
-                        <a href="">Delete</a>
+                        <a href="{{ route('admin.user.edit', $user->id) }}" title="Edit" class="mx-1 text-green-700 text-2xl">
+                            <i class="ri-edit-fill"></i>
+                        </a>
+                        <a href="" title="Delete" class="mx-1 text-red-700 text-2xl">
+                            <i class="ri-delete-bin-fill"></i>
+                        </a>
                     </td>
                 </tr>
             @endforeach

@@ -43,6 +43,11 @@ Route::group(['as'=>'admin.','prefix'=>'admin', 'middleware'=>['auth', 'role:adm
     // User Routes
     Route::group(['prefix' => 'user', 'as' => 'user.'], function(){
         Route::get('/', [AdminUserController::class, 'index'])->name('index');
+        Route::get('/create', [AdminUserController::class, 'create'])->name('create');
+        Route::post('/store', [AdminUserController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [AdminUserController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [AdminUserController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [AdminUserController::class, 'delete'])->name('delete');
     });
 });
 
